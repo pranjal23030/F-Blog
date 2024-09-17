@@ -1,2 +1,3 @@
-# F-Blog
-Blog website in React
+# Blog Project
+
+Backend of the Blog Project with simple CRUD, made in NodeJs
