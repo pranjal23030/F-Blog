@@ -7,7 +7,7 @@ function Card({ blog }) {
         <div className="max-w-sm rounded overflow-hidden shadow-lg">
           <img
             className="w-full"
-            src={"http://localhost:3000/" + blog.image}
+            src={blog.image}
             alt="Sunset in the mountains"
           />
           <div className="px-6 py-4">
