@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
@@ -36,8 +36,27 @@ function EditBlog() {
     else {
       alert("Something went wrong!!!")
     }
-
   }
+
+  const fetchSingleBlog = async () => {
+    const response = await axios.get("http://localhost:3000/blog/" + id);
+    if(response.status === 200) {
+      setData({
+        title : response.data.data.title,
+        description : response.data.data.description,
+        subtitle: response.data.data.subtitle,
+      })
+    } else {
+      alert("Something went wrong!!")
+    }
+  };
+
+  useEffect(() => {
+    fetchSingleBlog();
+  }, []);
+
+  console.log(data)
+
   return (
     <>
       <Navbar />
@@ -53,6 +72,7 @@ function EditBlog() {
                 className="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
                 placeholder="Title *"
                 onChange={handleChange}
+                value={data.title}
               />
 
               <input
@@ -61,6 +81,7 @@ function EditBlog() {
                 className="mt-1 block w-1/2 rounded-md border border-slate-300 bg-white px-3 py-4 placeholder-slate-400 shadow-sm placeholder:font-semibold placeholder:text-gray-500 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500 sm:text-sm"
                 placeholder="Subtitle *"
                 onChange={handleChange}
+                value={data.subtitle}
               />
             </div>
             <div className="my-6 flex gap-4">
@@ -77,8 +98,9 @@ function EditBlog() {
                 id="text"
                 cols="30"
                 rows="10"
-                className="mb-10 h-40 w-full resize-none rounded-md border border-slate-300 p-5 font-semibold text-gray-300"
+                className="mb-10 h-40 w-full resize-none rounded-md border border-slate-300 p-5 font-semibold text-black-300"
                 onChange={handleChange}
+                value={data.description}
               >
                 Description
               </textarea>

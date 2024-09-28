@@ -79,7 +79,7 @@ function CreateBlog() {
                 id="text"
                 cols="30"
                 rows="10"
-                className="mb-10 h-40 w-full resize-none rounded-md border border-slate-300 p-5 font-semibold text-gray-300"
+                className="mb-10 h-40 w-full resize-none rounded-md border border-slate-300 p-5 font-semibold text-black-300"
                 onChange={handleChange}
               >
                 Description
