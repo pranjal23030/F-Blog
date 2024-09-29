@@ -24,7 +24,7 @@ function EditBlog() {
 
   const editblog = async (e)=>{
     e.preventDefault()
-    const response = await axios.patch("https://pranjal-blog-project.onrender.com/blog/" + id, data, {
+    const response = await axios.patch("http://localhost:3000/blog/" + id, data, {
       headers : {
         "Content-Type" : "multipart/form-data"
       }
@@ -39,7 +39,7 @@ function EditBlog() {
   }
 
   const fetchSingleBlog = async () => {
-    const response = await axios.get("https://pranjal-blog-project.onrender.com/blog/" + id);
+    const response = await axios.get("http://localhost:3000/blog/" + id);
     if(response.status === 200) {
       setData({
         title : response.data.data.title,
