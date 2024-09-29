@@ -28,7 +28,7 @@ function CreateBlog() {
 
   const createBlog = async (e) => {
     e.preventDefault();
-    const response = await axios.post("http://localhost:3000/blog", data, {
+    const response = await axios.post("https://pranjal-blog-project.onrender.com/blog", data, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
